@@ -1,0 +1,12 @@
+- name: Return value as string
+  uses: actions/github-script@v2
+  id: return_value_as_string
+  with:
+    result-encoding: string
+    script: |
+      return "This is string"
+
+- name: Show steps.return_value_as_string
+  env:
+    RETURN_VALUE_AS_STRING: ${{ toJson(steps.return_value_as_string.outputs.result) }}
+  run: echo "$RETURN_VALUE_AS_STRING"
